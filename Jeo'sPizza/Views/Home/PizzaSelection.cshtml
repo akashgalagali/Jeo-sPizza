@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Jeo_sPizza.Models.Pizza>
+
+@{
+    ViewData["Title"] = "PizzaSelection";
+}
+
+<h1>PizzaSelection</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PizzaType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cost)
+            </th>
+      
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PizzaType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cost)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+        
+ <a id="@item.Id" asp-action="OrderCheckout" asp-route-id="@item.Id" class="btn btn-primary">Order</a>
+               
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
